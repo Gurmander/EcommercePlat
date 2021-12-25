@@ -36,8 +36,7 @@ class App extends Component {
             }
             // .data()-special method that provides info(data) of the snapShot
           }
-          // , () => console.log(this.state));
-          )
+          , () => console.log(this.state))
         });
       }
       else{
