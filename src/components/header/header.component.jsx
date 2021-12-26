@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg' 
 import {auth} from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
 
 const Header = ({currentUser}) => (
   <div className="header">
@@ -22,4 +23,11 @@ const Header = ({currentUser}) => (
   </div>
 );
 
-export default Header;
+//mapStateToProps when passed to connect, then
+// state there is our root-reducer which contains user: user-reducer that has currentUser value. So, instead of pulling the currentUser from app.js, we are grabbing it from root-reducer
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+// connect- higher order fn that provides the access to redux related stuff. It takes in 2 arguments
+export default connect(mapStateToProps)(Header);
