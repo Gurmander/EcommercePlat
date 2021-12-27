@@ -13,6 +13,9 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions'
+import { selectCurrentUser } from './redux/user/user.selector';
+import {createStructuredSelector} from 'reselect';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 class App extends Component {
   // constructor(){
@@ -64,6 +67,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Homepage}/>
           <Route exact path="/shop" component={ShopPage}/>
+          <Route exact path="/checkout" component={CheckoutPage}/>
           <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to='/'/>) : <SignInAndSignUpPage/>}
           />
         </Switch>
@@ -73,8 +77,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 // dispatch- whatever action is being passed through dispatch, it will get passed to every reducer in redux environment, dispatch basically pass the action to all the reducers
