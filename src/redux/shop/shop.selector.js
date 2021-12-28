@@ -20,7 +20,7 @@ export const selectCollections = createSelector(
 // Object.key- returns the keys in array of specific object passed
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
-  collections => Object.key(collections).map(key => collections[key])
+  collections => Object.keys(collections).map(key => collections[key])
 )
 
 export const selectCollection = collectionUrlParam => createSelector(
