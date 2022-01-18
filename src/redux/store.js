@@ -1,4 +1,4 @@
-// Store- immutable object tree in redux, state container which holds application's state, createStore is used to create Store, applyMiddleware helps to apply multiple middlewares like logger etc to store. Middleware lets us catch action and display it. 
+// Store- immutable object tree in redux, state container which holds application's state, createStore is used to create Store, applyMiddleware helps to apply multiple middlewares like logger etc to store. Middleware lets us catch action and utilize it in more enhanced way. 
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 
